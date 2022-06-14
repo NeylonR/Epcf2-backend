@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create list{% endblock %}
+
+{% block body %}
+{{form_start(form)}}
+    {{ form_label(form.name, 'List name') }}
+    {{ form_widget(form.name) }}
+    <li class="error">{{ form_errors(form.name, {
+        'attr': {'class': 'error'}
+        })
+    }}</li>
+{{form_end(form)}}
+<a href="{{path('app_list_detail', {'id': list.id})}}">Return</a>
+{% endblock %}

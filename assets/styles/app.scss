@@ -1,0 +1,81 @@
+@import "mixin";
+* {
+    list-style-type: none;
+    padding: 0;
+    margin:0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url(../../public/fonts/roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'robotoBold';
+    src: url(../../public/fonts/roboto/Roboto-Bold.ttf);
+}
+
+body{
+    scroll-behavior: smooth;
+    font-family: roboto;
+    padding: 2em;
+}
+
+.list{
+    @include flex($direction:column);
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+a{
+    display: inline-block;
+}
+
+.todoDone span{
+    text-decoration: line-through;
+}
+
+.todoUndone{
+    color: blue;
+}
+
+.button{
+    padding: .5em 1em;
+    color: white;
+    background-color: black;
+    font-family: robotoBold;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-right: .5em;
+}
+
+.buttonSecondary{
+    padding: .2em .5em;
+    color: white;
+    background-color: black;
+    font-family: roboto;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.list li{
+    @include flex(space-between);
+    gap: .3em;
+    padding: .5em 0;
+}
+form div{
+    padding: 1em 0;
+}
+
+form{
+    @include flex(center, column);
+}
+button{
+    border: none;
+}
+
+.error{
+    color:red;
+}

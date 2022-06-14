@@ -1,0 +1,30 @@
+@mixin flex ( $just : center, $direction : row, $align : center, $wrap : wrap) {
+    display: flex;
+    justify-content: $just;
+    align-items: $align;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+  }
+  
+@mixin transi($time : .3s) {
+  transition: all $time ease-in-out;
+}
+// $primaryColor: #363062;
+// $secondaryColor: #4D4C7D;
+$primaryColor: #154854;
+$secondaryColor: #4D4C7D;
+$thirdColor: #4C69B3;
+$fourthColor: #F9FDFF;
+$fontColorWhite : #F9F4EA;
+$fontColorBlack : #000000;
+$backgroundColorGreen : #154854;
+$backgroundColorBeige : #EBE6DB;
+
+$youtubeColor : #f00;
+$twitterColor : #31a4f1;
+$linkedinColor : #5ab0f7;
+$instagramColor : linear-gradient(53deg, rgba(252,175,69,1) 0%, rgba(245,96,64,1) 18%, rgba(193,53,132,1) 100%);
+$facebookColor : #3b5998;
+$websiteColor : black;
+
+$instaHoverColor : linear-gradient(53deg, rgba(252,175,69,1) 0%, $primaryColor 18%, rgba(193,53,132,1) 100%);

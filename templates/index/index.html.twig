@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+{% for list in lists %}
+<div class="list">
+    <h2>{{list.name}}</h2>
+    <p>Tasks: {{list.taskId|length}}</p>
+    <a href="{{path('app_list_detail', {'id': list.id})}}">Details</a>
+    <a href="{{path('app_list_delete', {'id': list.id})}}">Delete</a>
+    {# {% for task in list.taskId %}
+        {{task.title}}
+    {% endfor %} #}
+</div>
+{% endfor %}
+
+<a href="{{path('app_list_create')}}">Create a new list</a>
+{# <a href="{{path('app_task_create')}}">Create a new task</a> #}
+{% endblock %}
