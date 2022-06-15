@@ -32,7 +32,8 @@ class TaskController extends AbstractController
             return $this->redirectToRoute('app_list_detail', ['id' => $task->getTodoList()->getId()]);
         }
         return $this->render('index/taskCreate.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'list' => $todoList
         ]);
     }
 
@@ -56,11 +57,20 @@ class TaskController extends AbstractController
     }
 
     #[Route('/taskDelete/{id<\d+>}', name: 'app_task_delete_done')]
-    public function listDelete(TaskRepository $taskRepository, TodoList $todoList): Response
+    public function listDelete(TaskRepository $taskRepository, TodoList $todoList, EntityManagerInterface $em): Response
     {
+        // $todoList = $todoList->getTaskId();
+        // dd(...$todoList);
         $taskRepository->deleteDoneTask($todoList->getId());
-        $taskRepository->findBy(['todoList' =>])
+
+        // $lists = $taskRepository->findBy(['todoList' => $todoList->getId(), 'todoState' => true]);
+        // foreach($lists as $task){
+        //     // dd($task);
+        //     $em->remove($task);
+        //     $em->flush();
+        // }
+        
         // dd($lists);
-        return $this->redirectToRoute('app_index');
+        return $this->redirectToRoute('app_list_detail', ['id' => $todoList->getId()]);
     }
 }

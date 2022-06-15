@@ -69,17 +69,19 @@ class TaskRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('task')
         // ->select('task')
-        ->delete('task', 't')
-        // ->join('t.todoList', 'todoList')
-        ->where('t.todoState = true')
-        ->andWhere('t.todoList.id = (:listId)')
+        ->delete('task')
+        // ->join('task.todoList', 'todoList')
+        ->where('task.todoState = true')
+        ->andWhere('task.todoList = (:listId)')
         ->setParameter('listId', $todoList)
         ;
 
-        // dd($query->getQuery());
+        // dd($query->getQuery()->getResult());
+        // dd($query->getDQL());
 
 
         $query->getQuery()->execute();
+        return;
     }
 }
 

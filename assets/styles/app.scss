@@ -21,12 +21,20 @@ body{
     scroll-behavior: smooth;
     font-family: roboto;
     padding: 2em;
+    @include flex(center, column);
 }
 
 .list{
     @include flex($direction:column);
     padding: 1em;
     margin-bottom: 1em;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    width: 300px;
+    border-radius: 5px;
+
+    p{
+        padding: .5em 0;
+    }
 }
 
 a{
@@ -49,15 +57,19 @@ a{
     border-radius: 10px;
     font-size: 16px;
     margin-right: .5em;
+    cursor: pointer;
+    margin-bottom: .3em;
 }
 
 .buttonSecondary{
     padding: .2em .5em;
+    margin-bottom: .3em;
     color: white;
     background-color: black;
     font-family: roboto;
     border-radius: 10px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .list li{
@@ -78,4 +90,8 @@ button{
 
 .error{
     color:red;
+}
+
+.delete{
+    background-color: rgb(117, 11, 11);
 }

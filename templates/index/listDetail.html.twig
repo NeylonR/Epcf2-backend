@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}{{list.name}}{% endblock %}
 
 {% block body %}
 
 <div class="list">
     <h2>{{list.name}}</h2>
-    <p>Tasks: {{list.taskId|length}}</p>
+    {# <p>Tasks: {{list.taskId|length}}</p> #}
    <ul>
         {% for task in list.taskId %}
             {% if task.todoState == true %}
@@ -17,8 +17,11 @@
         {% endfor %}
     </ul>
 </div>
-<a class="button" href="{{path('app_task_delete_done', {'id':list.id})}}">Delete all done task</a>
-<a class="button" href="{{path('app_list_modify', {'id':list.id})}}">Change name of the list</a>
-<a class="button" href="{{path('app_index')}}">Return</a>
-<a class="button" href="{{path('app_task_create', {'id':list.id})}}">Create a new task</a>
+<div>
+    <a class="button" href="{{path('app_task_delete_done', {'id':list.id})}}">Delete all done task</a>
+    <a class="button" href="{{path('app_list_modify', {'id':list.id})}}">Change name of the list</a>
+    <a class="button" href="{{path('app_task_create', {'id':list.id})}}">
+    Add a new task</a>
+    <a class="button" href="{{path('app_index')}}">Return</a>
+</div>
 {% endblock %}

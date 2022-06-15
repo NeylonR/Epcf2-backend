@@ -6,15 +6,19 @@
 {% for list in lists %}
 <div class="list">
     <h2>{{list.name}}</h2>
-    <p>Tasks: {{list.taskId|length}}</p>
-    <a href="{{path('app_list_detail', {'id': list.id})}}">Details</a>
-    <a href="{{path('app_list_delete', {'id': list.id})}}">Delete</a>
-    {# {% for task in list.taskId %}
-        {{task.title}}
-    {% endfor %} #}
+    {% if list.taskId|length > 1 %}
+        <p>Tasks : {{list.taskId|length}}</p>
+        {% elseif list.taskId|length == 1 %}
+            <p>Task : {{list.taskId|length}}</p>
+        {% else %}
+            <p>No task</p>
+    {% endif %}
+
+    <a class="buttonSecondary" href="{{path('app_list_detail', {'id': list.id})}}">Details</a>
+    <a class="buttonSecondary delete" href="{{path('app_list_delete', {'id': list.id})}}">Delete</a>
+
 </div>
 {% endfor %}
 
-<a href="{{path('app_list_create')}}">Create a new list</a>
-{# <a href="{{path('app_task_create')}}">Create a new task</a> #}
+<a class="button" href="{{path('app_list_create')}}">Create a new list</a>
 {% endblock %}

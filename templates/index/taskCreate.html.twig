@@ -3,5 +3,15 @@
 {% block title %}Create task{% endblock %}
 
 {% block body %}
-{{form(form)}}
+{# {{form(form)}} #}
+{{form_start(form)}}
+    {{ form_label(form.title, 'Task name') }}
+    {{ form_widget(form.title) }}
+    <li class="error">{{ form_errors(form.title, {
+        'attr': {'class': 'error'}
+        })
+    }}</li>
+{{form_end(form)}}
+
+<a class="button" href="{{path('app_list_detail', {'id':list.id})}}">Return</a>
 {% endblock %}
