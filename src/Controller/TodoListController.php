@@ -16,9 +16,8 @@ class TodoListController extends AbstractController
 {
     
     #[Route('/list/{id<\d+>}', name: 'app_list_detail')]
-    public function listDetail(TodoListRepository $todoListRepository, TodoList $list): Response
+    public function listDetail(TodoList $list): Response
     {
-        // dd($lists);
         return $this->render('index/listDetail.html.twig', [
             'list' => $list
         ]);
@@ -64,7 +63,7 @@ class TodoListController extends AbstractController
     public function listDelete(TodoListRepository $todoListRepository, TodoList $list): Response
     {
         $todoListRepository->remove($list);
-        // dd($lists);
+
         return $this->redirectToRoute('app_index');
     }
 }

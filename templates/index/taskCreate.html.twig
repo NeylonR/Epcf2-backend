@@ -3,7 +3,7 @@
 {% block title %}Create task{% endblock %}
 
 {% block body %}
-{# {{form(form)}} #}
+
 {{form_start(form)}}
     {{ form_label(form.title, 'Task name') }}
     {{ form_widget(form.title) }}
@@ -13,5 +13,12 @@
     }}</li>
 {{form_end(form)}}
 
-<a class="button" href="{{path('app_list_detail', {'id':list.id})}}">Return</a>
+{% if list is defined %}
+    <a class="button" href="{{path('app_list_detail', {'id':list.id})}}">Return</a>
+{% else %}
+    <a class="button" href="{{path('app_list_detail', {'id':task.todoList.id})}}">Return</a>
+{% endif %}
+
+    
+
 {% endblock %}

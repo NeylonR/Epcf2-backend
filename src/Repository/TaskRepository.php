@@ -84,5 +84,3 @@ class TaskRepository extends ServiceEntityRepository
         return;
     }
 }
-
-// select * from task INNER JOIN todo_list WHERE task.todo_state = true AND todo_list.id = task.todo_list_id;

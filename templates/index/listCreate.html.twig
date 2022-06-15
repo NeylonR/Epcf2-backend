@@ -3,13 +3,18 @@
 {% block title %}Create list{% endblock %}
 
 {% block body %}
-{{form_start(form)}}
-    {{ form_label(form.name, 'List name') }}
-    {{ form_widget(form.name) }}
-    <li class="error">{{ form_errors(form.name, {
-        'attr': {'class': 'error'}
-        })
-    }}</li>
-{{form_end(form)}}
-<a class="button" href="{{path('app_index')}}">Return</a>
+    {{form_start(form)}}
+        {{ form_label(form.name, 'List name') }}
+        {{ form_widget(form.name) }}
+        <li class="error">{{ form_errors(form.name, {
+            'attr': {'class': 'error'}
+            })
+        }}</li>
+    {{form_end(form)}}
+
+    {% if list is defined %}
+        <a class="button" href="{{path('app_list_detail', {'id':list.id})}}">Return</a>
+    {% else %}
+        <a class="button" href="{{path('app_index')}}">Return</a>
+    {% endif %}
 {% endblock %}
