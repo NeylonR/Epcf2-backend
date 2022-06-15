@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appointment index{% endblock %}
+
+{% block body %}
+    <a class="button appointmentButton" href="{{path('app_appointment_create')}}">Create a new appointment</a>
+
+    {% if lists is empty %}
+        <p class="error">No result.</p>
+    {% else %}
+        <div class="listContainer">
+            {% for list in lists %}
+                <div class="list">
+                    <h2>{{list.name}}</h2>
+                    <p>Place : {{list.place}}</p>
+                    <p>Prio : {{list.priority}}</p>
+                    <p>Started : {{list.beginDate|date("d/m/Y H:i")}}</p>
+                    <p>Ended : {{list.endDate|date("d/m/Y H:i")}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="navigation">
+        {{ knp_pagination_render(lists, 'pagination.html.twig') }}
+    </div>
+
+    {{form_start(form)}}
+        {{form_row(form.name)}}
+        {{form_row(form.place)}}
+        {{form_row(form.priority)}}
+
+        {% if error is defined %}
+            <p class="error">{{error}}</p>
+        {% endif %}
+
+        {{form_row(form.beginDate)}}
+        {{form_row(form.endDate)}}
+        {{form_row(form.Search)}}
+    {{form_end(form)}}
+
+{% endblock %}

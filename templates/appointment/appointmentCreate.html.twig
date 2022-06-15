@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create list{% endblock %}
+
+{% block body %}
+    {{form_start(form)}}
+        {# {{ form_label(form.name, 'List name') }}
+        {{ form_widget(form.name) }}
+        <li class="error">{{ form_errors(form.name, {
+            'attr': {'class': 'error'}
+            })
+        }}</li> #}
+        {{form_row(form.name)}}
+        {{form_row(form.place)}}
+        {{form_row(form.priority)}}
+        {% if error is defined %}
+        <p class="error">{{error}}</p>
+        {% endif %}
+        {{form_row(form.beginDate)}}
+        {{form_row(form.endDate)}}
+    {{form_end(form)}}
+<a class="button" href="{{path('app_appointment')}}">Return</a>
+{% endblock %}
